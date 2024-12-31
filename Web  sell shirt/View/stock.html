@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Stock Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 12px;
+        }
+
+        table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>ສິນຄ້າໃນຮ້ານຍັງເຫຼືອ</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Picture</th>
+                <th>Product Name</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+        <tbody id="productTable">
+            <!-- Dynamic product rows will be inserted here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Example product data
+        const products = [
+            {
+                id: 1,
+                name: "ຮູບ",
+                stock: 10,
+                image: "https://scontent.fdad7-1.fna.fbcdn.net/v/t39.30808-6/454500695_969363831543776_1757153480454578913_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=umuFi2xEOQcQ7kNvgGLlNG0&_nc_zt=23&_nc_ht=scontent.fdad7-1.fna&_nc_gid=AA52orNl-4Ia-PRjirL67gR&oh=00_AYAfOzAttz-TlMogUdV28S1vHMHgB5T_YfLerB6s9HnOyA&oe=677856AB"
+            },
+            {
+                id: 2,
+                name: "ໝູນ້ອຍ",
+                stock: 5,
+                image: "https://scontent.fdad7-2.fna.fbcdn.net/v/t39.30808-6/458980860_988358902977602_937566559796679436_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=pAGsoHEJ1DcQ7kNvgGJZNTD&_nc_zt=23&_nc_ht=scontent.fdad7-2.fna&_nc_gid=AxlFhs1DRFqx7cqMdHiy7Y-&oh=00_AYAEB3mO1Lr28-TyI6_Mp8AUoWG9Tz8jswQRmGytkVoPiQ&oe=67782DEE"
+            },
+            {
+                id: 3,
+                name: "ຖົງກະຕ່າຍ",
+                stock: 8,
+                image: "https://scontent.fdad7-2.fna.fbcdn.net/v/t39.30808-6/465594387_122212199870026371_9150437725934338646_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=SLfM9i3XXUQQ7kNvgFfwKE6&_nc_zt=23&_nc_ht=scontent.fdad7-2.fna&_nc_gid=A7mmNdB0q-xv9NBlxGveTQG&oh=00_AYBUfmisqBaDz9310YseJOfm3SPBVDBXu5uaz0YBXdQJIg&oe=67788BA5"
+            },
+            {
+                id: 4,
+                name: "ຕຸກກະຕາ",
+                stock: 2,
+                image: "https://scontent.fdad7-2.fna.fbcdn.net/v/t39.30808-6/466043993_122213460224026371_546472944771900736_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=em-NLU8rI-MQ7kNvgHUf4-K&_nc_zt=23&_nc_ht=scontent.fdad7-2.fna&_nc_gid=AR7cQY7_AHmw0Pv5L5WB8mt&oh=00_AYAfsr29DH3NNIKVAxwgzMh2qDaMMp1_9vrFDgK0m6oHCA&oe=677864BF"
+            }
+        ];
+
+        // Function to populate the product table
+        function populateTable() {
+            const tableBody = document.getElementById("productTable");
+            tableBody.innerHTML = ""; // Clear existing rows
+
+            products.forEach(product => {
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td><img src="${product.image}" alt="${product.name}"></td>
+                    <td>${product.name}</td>
+                    <td>${product.stock}</td>
+                `;
+
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Populate the table on page load
+        populateTable();
+    </script>
+</body>
+</html>
